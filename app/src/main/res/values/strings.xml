@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="city">City</string>
+    <string name="placeholder_temp">72</string>
+    <string name="placeholder_weather">Clouds</string>
+    <string name="search_button">Search</string>
+    <string name="search_title">Search Weather by City</string>
+</resources>
