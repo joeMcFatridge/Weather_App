@@ -44,7 +44,7 @@ class ListFragment : Fragment() {
         if(adapter == null) adapter = weatherAdapter
         val list = filterList(weather)
         weatherAdapter.clear()
-        weatherAdapter.updateList(list, weatherViewModel.searchedCity.toString())
+        weatherAdapter.updateList(list, weatherViewModel.searchedCity.value.toString())
     }
 
     private fun filterList(list: List<WeatherResponse>): List<WeatherResponse> {

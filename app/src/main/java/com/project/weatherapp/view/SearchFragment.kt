@@ -12,7 +12,6 @@ import com.project.weatherapp.databinding.FragmentSearchBinding
 import com.project.weatherapp.util.Status
 import com.project.weatherapp.viewmodel.WeatherViewModel
 
-// TODO: 10/21/21 Localize strings
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
@@ -53,7 +52,7 @@ class SearchFragment : Fragment() {
                     }
                     Status.GOOD.stat -> {
                         clearStatus()
-                        city = searchedCity.toString()
+                        city = searchedCity.value.toString()
                         val action = SearchFragmentDirections.actionSearchFragmentToListFragment(city)
                         findNavController().navigate(action)
                     }

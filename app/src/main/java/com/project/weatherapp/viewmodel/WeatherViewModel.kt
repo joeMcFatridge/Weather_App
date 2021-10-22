@@ -21,10 +21,12 @@ class WeatherViewModel: ViewModel() {
     private val _status = MutableLiveData<String>()
     val status: LiveData<String> get() = _status
 
-    var searchedCity: String? = null
+    private val _searchedCity = MutableLiveData<String>()
+    val searchedCity: LiveData<String> get() = _searchedCity
+
 
     fun getData(city: String) {
-        searchedCity = city.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+        _searchedCity.value = city.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         fetchWeather()
     }
 
@@ -37,7 +39,7 @@ class WeatherViewModel: ViewModel() {
     private fun fetchWeather() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = ApiClient.weatherService.getWeather(searchedCity.toString())
+                val response = ApiClient.weatherService.getWeather(searchedCity.value.toString())
 
                 if(response.isSuccessful) {
                     setStatus(Status.GOOD.stat)
